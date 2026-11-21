@@ -61,6 +61,105 @@ export function Docs({ items }: { items: Doc[] }) {
   );
 }
 
+export function Stats({ items }: { items: { value: string; label: string }[] }) {
+  return (
+    <div
+      className={`mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-lg border border-[var(--line)] bg-[var(--line)] ${
+        items.length === 3 ? "sm:grid-cols-3" : "sm:grid-cols-4"
+      }`}
+    >
+      {items.map((s) => (
+        <div key={s.label} className="bg-white px-4 py-4">
+          <p className="sans text-[24px] font-semibold leading-none tracking-[-0.01em] text-[var(--ink)] sm:text-[26px]">
+            {s.value}
+          </p>
+          <p className="sans mt-2 text-[12.5px] leading-snug text-[var(--muted)]">{s.label}</p>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export function Prose({ children }: { children: ReactNode }) {
+  return <div className="space-y-4 text-[17px] leading-[1.65]">{children}</div>;
+}
+
+export function P({ text }: { text: string }) {
+  return (
+    <p>
+      <Rich text={text} />
+    </p>
+  );
+}
+
+export function Sub({ children }: { children: ReactNode }) {
+  return <h3 className="sans mb-3 mt-9 text-[17px] font-semibold first:mt-0">{children}</h3>;
+}
+
+export function Bullets({ items }: { items: string[] }) {
+  return (
+    <ul className="dash-list text-[17px] leading-[1.6]">
+      {items.map((d) => (
+        <li key={d}>
+          <Rich text={d} />
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+export function Specs({
+  head,
+  rows,
+  note,
+}: {
+  head: string[];
+  rows: string[][];
+  note?: string;
+}) {
+  return (
+    <div className="my-5">
+      <div className="sans overflow-x-auto rounded-lg border border-[var(--line)] bg-white">
+        <table className="w-full min-w-[420px] text-left text-[14.5px]">
+          <thead className="bg-[var(--paper)] text-[12px] uppercase tracking-[0.08em] text-[var(--muted)]">
+            <tr>
+              {head.map((h) => (
+                <th key={h} className="px-4 py-2.5 font-semibold">
+                  {h}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((r) => (
+              <tr key={r[0]} className="border-t border-[var(--line)] align-top">
+                {r.map((c, i) => (
+                  <td key={i} className={`px-4 py-2.5 ${i === 0 ? "font-medium" : "tabular-nums"}`}>
+                    {c}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      {note && <p className="sans mt-2 text-[12.5px] leading-snug text-[var(--muted)]">{note}</p>}
+    </div>
+  );
+}
+
+/** Divider between the quick summary (top) and the full engineering story (below). */
+export function DeepDive({ children }: { children?: ReactNode }) {
+  return (
+    <div className="mt-16 border-t-2 border-[var(--ink)] pt-5">
+      <h2 className="sans text-[22px] font-bold tracking-[-0.01em]">Engineering detail</h2>
+      <p className="mt-1 max-w-[620px] text-[16px] leading-[1.55] text-[var(--muted)]">
+        {children ?? "The full story for anyone who wants to dig in: design decisions, numbers, and what didn't work."}
+      </p>
+    </div>
+  );
+}
+
 type Props = {
   title: string;
   meta: string;
@@ -69,10 +168,11 @@ type Props = {
   did: string[];
   hard?: string;
   result?: string;
+  stats?: { value: string; label: string }[];
   children?: ReactNode;
 };
 
-export default function ProjectPage({ title, meta, hero, oneLiner, did, hard, result, children }: Props) {
+export default function ProjectPage({ title, meta, hero, oneLiner, did, hard, result, stats, children }: Props) {
   return (
     <div className="mx-auto w-full max-w-[860px] px-4 py-10 sm:px-10 lg:py-16">
       <Link href="/projects" className="link-arrow">
@@ -98,6 +198,8 @@ export default function ProjectPage({ title, meta, hero, oneLiner, did, hard, re
           )}
         </figure>
       )}
+
+      {stats && <Stats items={stats} />}
 
       <Section title="What I did">
         <ul className="dash-list text-[17px] leading-[1.6]">
