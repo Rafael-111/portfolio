@@ -27,6 +27,8 @@ export default function MemsPage() {
         "Laid out the design so it can be built with the standard five-mask MUMPS surface micromachining process, following its 2 µm design rules.",
         "Identified the open problems: actuator wiring, how to apply voltage to the metal layer, and fluid simulation.",
       ]}
+      hard="At this scale a valve has to push hard and still not leak. One actuator only gives about 4.4 µN, so I worked out how to combine six into a yoke array and added electrostatic latching to hold the seal."
+      result="A complete valve design that fits the standard five-mask MUMPS process, with an estimated 93 µN of plug force at 8 µm of travel. It is calculated, not yet fabricated."
     >
       <Section title="Design">
         <Gallery cols={1} items={[{ src: "/img/mems-render.webp", alt: "Render of the valve plug in the channel", caption: "The plug seated in the channel." }]} />

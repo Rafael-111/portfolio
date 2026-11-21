@@ -21,6 +21,8 @@ export default function StatsPage() {
         "Tuned each model with grid search and cross-validation.",
         "Found that the random forest predicted best by a wide margin, which means caffeine use depends on how factors interact, not on any one factor.",
       ]}
+      hard="With only 500 rows, ten caffeine bins gave poor models, and no single feature predicted much (the best correlation was 0.08). I grouped intake into three classes and let the models combine features."
+      result="The random forest explained about 76% of the variance (R² 0.757). Plain linear regression scored 0.023."
     >
       <Section title="Results">
         <Specs

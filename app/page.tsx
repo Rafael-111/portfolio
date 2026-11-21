@@ -78,6 +78,14 @@ export default function Home() {
             Resume (PDF)
           </a>
           <a
+            href="/Rafael%20Petrosian-Hardware-Proof.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="rounded-md bg-[var(--ink)] px-3.5 py-2 text-white hover:bg-[var(--accent)]"
+          >
+            Hardware Proof (PDF)
+          </a>
+          <a
             href={`mailto:${contact.email}`}
             className="rounded-md border border-[var(--line)] bg-white px-3.5 py-2 hover:border-[var(--ink)]"
           >

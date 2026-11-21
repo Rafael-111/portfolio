@@ -26,6 +26,7 @@ export default function TurbinePage() {
         "Helped test power output at a controlled wind speed with a tachometer and a variable electrical load.",
         "Helped measure the tower's stiffness by hanging weights from it and recording deflection.",
       ]}
+      hard="Getting the most stiffness per gram inside a fixed volume, while also tuning the blades for a 25 mph wind. The tower had to be light and stiff at once."
       result="The turbine made a peak of 1.56 W at 25 mph, and the tower held a 1 kg load with just 0.53 mm of deflection."
     >
       <Section title="Design and analysis">
