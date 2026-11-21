@@ -8,10 +8,10 @@ export default function AeroPage() {
       title="Cal Aero SAE Wing"
       meta="Wing Design Engineer · Cal Aero SAE · UC Berkeley · Sep 2023 – Apr 2024"
       oneLiner="I worked out the final shape of the wing for our competition plane, sized its spar, and helped build it. The plane flew and placed **top 15** in the Regular Class at SAE Aero Design West 2024."
-      hero={{
-        src: "/img/aero-plane.webp",
-        alt: "The Cal Aero SAE plane on the runway",
-        caption: "Our plane on the runway.",
+      heroVideo={{
+        src: "/flight.mp4",
+        poster: "/img/aero-plane.webp",
+        caption: "Flight test of the plane.",
       }}
       stats={[
         { value: "Top 15", label: "Regular Class, SAE Aero Design West 2024" },
@@ -29,16 +29,6 @@ export default function AeroPage() {
       hard="The dihedral simulations were complicated and confusing at first. I also had to learn manufacturing from scratch: the laser cutter, cutting airfoils, and building the wing."
       result="The wing we built matched the design, the plane flew, and we placed **top 15** in the Regular Class at SAE Aero Design West 2024."
     >
-      <Section title="Flight test">
-        <div className="shot">
-          <video controls preload="metadata" playsInline className="block w-full" poster="/img/aero-render.webp">
-            <source src="/flight.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        <p className="sans mt-2 text-[13px] text-[var(--muted)]">Flight testing the plane.</p>
-      </Section>
-
       <DeepDive />
 
       <Section title="The challenge">

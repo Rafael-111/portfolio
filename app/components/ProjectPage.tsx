@@ -169,10 +169,11 @@ type Props = {
   hard?: string;
   result?: string;
   stats?: { value: string; label: string }[];
+  heroVideo?: { src: string; poster?: string; caption?: string };
   children?: ReactNode;
 };
 
-export default function ProjectPage({ title, meta, hero, oneLiner, did, hard, result, stats, children }: Props) {
+export default function ProjectPage({ title, meta, hero, oneLiner, did, hard, result, stats, heroVideo, children }: Props) {
   return (
     <div className="mx-auto w-full max-w-[860px] px-4 py-10 sm:px-10 lg:py-16">
       <Link href="/projects" className="link-arrow">
@@ -187,6 +188,20 @@ export default function ProjectPage({ title, meta, hero, oneLiner, did, hard, re
       <p className="mt-7 text-[20px] leading-[1.5] sm:text-[22px]">
         <Rich text={oneLiner} />
       </p>
+
+      {heroVideo && (
+        <figure className="mt-8">
+          <div className="shot">
+            <video controls preload="metadata" playsInline className="block w-full" poster={heroVideo.poster}>
+              <source src={heroVideo.src} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          {heroVideo.caption && (
+            <figcaption className="sans mt-2 text-[13px] text-[var(--muted)]">{heroVideo.caption}</figcaption>
+          )}
+        </figure>
+      )}
 
       {hero && (
         <figure className="mt-8">
