@@ -1,69 +1,31 @@
-export default function ThermoactuatorPage() {
+import ProjectPage, { Section, Gallery, Docs } from "../../components/ProjectPage";
+
+export const metadata = { title: "MEMS Exhaust Valve · Rafael Petrosian" };
+
+export default function MemsPage() {
   return (
-    <main className="min-h-screen bg-[#F6F1E8] text-black">
-      {/* HOME ICON */}
-      <a
-        href="/"
-        className="fixed top-6 left-6 z-50 bg-white/40 backdrop-blur-sm rounded-md p-1 hover:scale-105 transition"
-      >
-        <img
-          src="/home icon.png"
-          alt="Home"
-          className="w-6 h-6 opacity-80 hover:opacity-100 transition"
-        />
-      </a>
-
-      {/* BACK TO PROJECTS ICON */}
-      <a
-        href="/projects"
-        className="fixed top-6 left-16 z-50 bg-white/40 backdrop-blur-sm rounded-md p-1 hover:scale-105 transition"
-      >
-        <img
-          src="/back-arrow-icon.png"
-          alt="Back to Projects"
-          className="w-6 h-6 opacity-80 hover:opacity-100 transition"
-        />
-      </a>
-
-      <div
-        className="mx-auto max-w-3xl px-8 py-16 space-y-10"
-        style={{
-          fontFamily:
-            '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
-        }}
-      >
-        <h1 className="text-2xl sm:text-3xl font-semibold tracking-[-0.01em]">
-          Thermoactuator Exhaust Valve
-        </h1>
-
-        <p className="text-base leading-relaxed text-black/80">
-          Designed a MEMS-compatible microfluidic exhaust valve using a thermal yoke-array actuator
-          to plug a channel, with electrostatic latching to improve sealing and reduce leakage.
-          The device was analyzed for force output, deflection, and fabrication feasibility within
-          standard surface micromachining constraints.
-        </p>
-
-        <div className="space-y-3">
-          <h2 className="text-lg font-medium">Project Report</h2>
-
-          <div className="w-full h-[900px] border border-black/10 rounded-lg overflow-hidden bg-white/30">
-            <iframe
-              src="/Microfluidic Exhaust Valve Project.pdf"
-              className="w-full h-full"
-              title="Thermoactuator Exhaust Valve Report"
-            />
-          </div>
-
-          <a
-            href="/Microfluidic Exhaust Valve Project.pdf"
-            target="_blank"
-            rel="noreferrer"
-            className="inline-block text-sm text-black/70 hover:text-black underline underline-offset-4"
-          >
-            Open PDF in new tab
-          </a>
-        </div>
-      </div>
-    </main>
+    <ProjectPage
+      title="MEMS Microfluidic Exhaust Valve"
+      meta="UC Berkeley course project"
+      oneLiner="A microscopic valve for microfluidic chips. Heat pushes a plug into a tiny channel to close it, and an electric charge holds it shut."
+      hero={{
+        src: "/img/mems-layout.webp",
+        alt: "Layout of the thermal actuator array and valve plug",
+        caption: "The thermal actuator array that drives the valve plug.",
+        fit: "contain",
+      }}
+      did={[
+        "Designed the valve around a thermal yoke-array actuator that pushes a plug into the channel.",
+        "Added electrostatic latching so the valve seals better and leaks less.",
+        "Checked force, deflection, and whether it could be built with standard surface micromachining.",
+      ]}
+    >
+      <Section title="Design">
+        <Gallery cols={1} items={[{ src: "/img/mems-render.webp", alt: "Render of the valve plug in the channel", caption: "The plug seated in the channel." }]} />
+      </Section>
+      <Section title="Full report">
+        <Docs items={[{ label: "MEMS valve project report", href: "/Microfluidic%20Exhaust%20Valve%20Project.pdf", note: "PDF" }]} />
+      </Section>
+    </ProjectPage>
   );
 }

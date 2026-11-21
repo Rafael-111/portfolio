@@ -1,20 +1,33 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
+import Sidebar from "./components/Sidebar";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+const sans = localFont({
+  src: [
+    { path: "./fonts/ibm-plex-sans-latin-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/ibm-plex-sans-latin-500-normal.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/ibm-plex-sans-latin-600-normal.woff2", weight: "600", style: "normal" },
+    { path: "./fonts/ibm-plex-sans-latin-700-normal.woff2", weight: "700", style: "normal" },
+  ],
+  variable: "--font-plex",
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const serif = localFont({
+  src: [
+    { path: "./fonts/source-serif-4-latin-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/source-serif-4-latin-400-italic.woff2", weight: "400", style: "italic" },
+    { path: "./fonts/source-serif-4-latin-600-normal.woff2", weight: "600", style: "normal" },
+  ],
+  variable: "--font-source",
+  display: "swap",
 });
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Rafael Petrosian",
-  description: "Mechanical Engineer | UC Berkeley | Aerospace & Robotics",
+  description:
+    "Mechanical engineer from UC Berkeley. I design, build, and test hardware: race motorcycles, aircraft, robots, and test rigs.",
 };
 
 export default function RootLayout({
@@ -23,11 +36,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+    <html lang="en" className={`${sans.variable} ${serif.variable}`}>
+      <body>
+        <Sidebar />
+        <main className="site-main">{children}</main>
       </body>
     </html>
   );

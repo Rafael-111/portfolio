@@ -1,54 +1,60 @@
+import Link from "next/link";
+import { cards } from "../data";
+
+export const metadata = { title: "Projects · Rafael Petrosian" };
+
+function Card({ c, big, wide }) {
+  return (
+    <Link href={`/projects/${c.slug}`} className={`group block ${wide ? "sm:col-span-2" : ""}`}>
+      <div className={`shot ${wide ? "aspect-[16/10] sm:aspect-[21/9]" : big ? "aspect-[16/10]" : "aspect-[4/3]"}`}>
+        {c.image && (
+          <img
+            src={c.image}
+            alt={c.imageAlt ?? ""}
+            loading="lazy"
+            style={c.imageFit === "contain" ? { objectFit: "contain", padding: "14%" } : undefined}
+          />
+        )}
+      </div>
+      <p className="sans mt-3 text-[11.5px] font-medium uppercase tracking-[0.12em] text-[var(--muted)]">{c.tag}</p>
+      <h3 className="sans mt-1 text-[17px] font-semibold leading-snug group-hover:text-[var(--accent)]">{c.title}</h3>
+      <p className="mt-1 text-[15.5px] leading-[1.5] text-[var(--ink)]/85">{c.line}</p>
+    </Link>
+  );
+}
+
 export default function ProjectsPage() {
-  const projects = [
-    ["πRo-Bot (Autonomous Fire Suppression Robot)", "/projects/pyrobot"],
-    ["MotoStudent Racing Motorcycle", "/projects/motostudent"],
-    ["Aero SAE Aircraft", "/projects/aerosae"],
-    ["MEMS Microfluidic Exhaust Valve", "/projects/mems"],
-    ["Wind Turbine Design + Testing", "/projects/turbine"],
-    ["Thermal Paste Experiment", "/projects/thermal-paste"],
-    ["Statistical Analysis", "/projects/stats-analysis"],
-    ["Rollator Wheel Hub Prototype", "/projects/walker-wheel"],
-  ];
+  const lead = cards.find((c) => c.slug === "aerosae");
+  const featured = cards.filter((c) => c.featured && c.slug !== "aerosae");
+  const more = cards.filter((c) => !c.featured);
 
   return (
-    <main className="min-h-screen bg-[#F6F1E8] text-black">
-      {/* HOME ICON */}
-      <a
-        href="/"
-        className="fixed top-6 left-6 z-50 bg-white/40 backdrop-blur-sm rounded-md p-1 hover:scale-105 transition"
-      >
-        <img
-          src="/home icon.png"
-          alt="Home"
-          className="w-6 h-6 opacity-80 hover:opacity-100 transition"
-        />
-      </a>
+    <div className="mx-auto w-full max-w-[980px] px-4 py-10 sm:px-10 lg:py-16">
+      <header className="border-b-2 border-[var(--ink)] pb-5">
+        <h1 className="sans text-[34px] font-bold leading-none tracking-[-0.02em] sm:text-[42px]">Projects</h1>
+        <p className="mt-3 max-w-[620px] text-[17px] leading-[1.55] text-[var(--muted)]">
+          Things I designed, built, and tested. Click any project for photos, CAD, data, and the full reports.
+        </p>
+      </header>
 
-      <div
-        className="mx-auto max-w-3xl px-8 py-10"
-        style={{
-          fontFamily:
-            '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
-        }}
-      >
-        <div className="py-14">
-          <h1 className="text-xl sm:text-2xl font-semibold tracking-[-0.01em] underline underline-offset-4 mb-10">
-            Projects
-          </h1>
-
-          <div className="space-y-2 text-[15.5px] leading-[1.75] tracking-[0.01em]">
-            {projects.map(([title, link]) => (
-              <a
-                key={title}
-                href={link}
-                className="block py-1 hover:translate-x-1 transition duration-150"
-              >
-                {title}
-              </a>
-            ))}
-          </div>
+      <section className="mt-10">
+        <h2 className="label">Featured</h2>
+        <div className="mt-5 grid gap-x-8 gap-y-10 sm:grid-cols-2">
+          <Card c={lead} big wide />
+          {featured.map((c) => (
+            <Card key={c.slug} c={c} big />
+          ))}
         </div>
-      </div>
-    </main>
+      </section>
+
+      <section className="mt-16">
+        <h2 className="label">More Projects</h2>
+        <div className="mt-5 grid gap-x-6 gap-y-9 sm:grid-cols-2 lg:grid-cols-4">
+          {more.map((c) => (
+            <Card key={c.slug} c={c} />
+          ))}
+        </div>
+      </section>
+    </div>
   );
 }
