@@ -5,7 +5,7 @@ export const contact = {
   name: "Rafael Petrosian",
   title: "Mechanical Engineer",
   location: "Los Angeles, CA",
-  email: "rafael1@berkeley.edu",
+  email: "rp@rafaelpetrosian.com",
   linkedin: "https://www.linkedin.com/in/rafaelpetrosian/",
   resume: "/Rafael%20Petrosian-Resume.pdf",
 };
