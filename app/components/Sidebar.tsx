@@ -9,6 +9,7 @@ const nav = [
   { label: "Home", href: "/", external: false },
   { label: "Projects", href: "/projects", external: false },
   { label: "Hardware Proof", href: "/hardware-proof", external: false },
+  { label: "Blogs", href: "/blogs", external: false },
   { label: "Resume", href: contact.resume, external: true },
   { label: "Contact", href: `mailto:${contact.email}`, external: false },
   { label: "LinkedIn", href: contact.linkedin, external: true },

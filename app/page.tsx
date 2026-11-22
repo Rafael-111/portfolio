@@ -59,16 +59,16 @@ export default function Home() {
   return (
     <div className="mx-auto w-full max-w-[860px] px-4 py-10 sm:px-10 lg:py-16">
       {/* Resume header */}
-      <header className="flex flex-col gap-4 border-b-2 border-[var(--ink)] pb-5 sm:flex-row sm:items-end sm:justify-between">
+      <header className="flex flex-col gap-4 border-b-2 border-[var(--ink)] pb-5 lg:flex-row lg:items-end lg:justify-between">
         <div className="sans">
-          <h1 className="text-[34px] font-bold leading-none tracking-[-0.02em] sm:text-[42px]">
+          <h1 className="whitespace-nowrap text-[34px] font-bold leading-none tracking-[-0.02em] sm:text-[40px]">
             {contact.name}
           </h1>
           <p className="mt-2 text-[15px] text-[var(--muted)]">
             {contact.title} · {contact.location}
           </p>
         </div>
-        <div className="sans flex flex-wrap gap-2 text-[13.5px] font-medium">
+        <div className="sans flex flex-wrap gap-2 text-[13px] font-medium lg:flex-nowrap">
           <a
             href={contact.resume}
             target="_blank"
