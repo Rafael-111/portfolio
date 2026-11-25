@@ -176,7 +176,7 @@ export default function SparkliPost() {
 
       <H id="mechanism">How the 2024 mechanism worked</H>
       <Prose>
-        <P text="By mid-July the design had settled into eight main parts plus hardware. We wrote it all up in a full invention description (more on why in the patent section). Here's how it worked:" />
+        <P text="By mid-July the design had settled into eight main parts plus hardware. We wrote it all up in a full invention description (more on why in the patent section, where you can read the whole PDF). Here's how it worked:" />
       </Prose>
       <div className="mt-6 grid gap-6 sm:grid-cols-[1.1fr_1fr]">
         <figure>
@@ -351,6 +351,23 @@ export default function SparkliPost() {
         <P text="Once tests 24 to 28 started carbonating, we did the 'responsible' thing and got lawyers. Over about three weeks we had meeting after meeting with two firms, read engagement letters, filled out an invention disclosure form, wrote a full invention description with every part, assembly step, and the firing sequence, and filed a **provisional patent**." />
         <P text="Looking back, that was a lot of time and money spent protecting a product that still leaked, for a market we hadn't validated. The invention description was useful (half the renders in this post come from it), but as a document for us, not as a legal shield." />
       </Prose>
+      <a
+        href="/Secco-Invention-Description.pdf"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mt-6 flex flex-col gap-5 rounded-lg border border-[var(--line)] bg-white p-4 hover:border-[var(--ink)] sm:flex-row sm:items-center"
+      >
+        <img src={`${B}secco-doc-cover.webp`} alt="Cover of the Secco invention description" className="w-[140px] shrink-0 rounded border border-[var(--line)]" />
+        <span>
+          <span className="sans block text-[12px] font-semibold uppercase tracking-[0.08em] text-[var(--muted)]">PDF · 18 pages</span>
+          <span className="sans mt-1 block text-[18px] font-semibold">Secco Invention Description (2024)</span>
+          <span className="mt-1 block text-[15.5px] leading-[1.5]">
+            The document behind our provisional patent, for the old trigger model: every component, the extra hardware, assembly
+            instructions, assembly images, the mechanical sequence, and how to use it.
+          </span>
+          <span className="sans mt-2 inline-block text-[14px] text-[var(--accent)]">Read the full PDF ↗</span>
+        </span>
+      </a>
 
       <H id="summer2">Summer 2 (2025): start over, but smarter</H>
       <Prose>
@@ -446,6 +463,41 @@ export default function SparkliPost() {
         <P text="The hardware in the Onshape document is a good snapshot of where our heads were: McMaster **heat-set inserts**, **vented cup-point set screws** (a screw with a hole down the middle, for letting gas out), three different compression springs, soft and hard Buna-N O-rings, and a square-profile O-ring." />
       </Prose>
 
+      <H3>The final design, part by part</H3>
+      <Prose>
+        <P text="Like the 2024 version, here's every part of the final design on its own. It has far fewer moving parts than the trigger era. Most of the cleverness moved into the seals." />
+      </Prose>
+      <Specs
+        head={["Part", "What it does"]}
+        rows={[
+          ["Housing", "The main body. Threads into the Hydro Flask, holds the cartridge, and carries the needle and seal seats."],
+          ["Cap", "Screws down over the housing and pushes the cartridge onto the needle. The domed seat matches the end of the cartridge."],
+          ["Cap gasket", "A flat square-profile ring that seals the cap to the housing, so gas can only go one way."],
+          ["O-rings", "Hard and soft Buna-N O-rings from McMaster, sealing the housing to the bottle and the nozzle to the housing."],
+          ["Heat-set insert", "Brass threads melted into the printed plastic, so metal screws can thread into it without stripping the print."],
+          ["Vented set screw", "A set screw with a hole down the middle. Screw it in to seal, back it out to let gas escape. This was the venting idea."],
+          ["Spring and plunger", "The parts of the later gas release: push the plunger to dump the pressure before you open the cap."],
+          ["CO₂ cartridge", "Modeled to the real cartridge's dimensions so every seat, needle depth, and clearance was checked in CAD before printing."],
+          ["Brass nozzle", "Same trick as 2024: a 3D-printer nozzle used as a cheap, precise brass orifice."],
+        ]}
+      />
+      <div className="mt-6">
+        <Gallery
+          cols={3}
+          items={[
+            { src: `${B}fin-housing.webp`, alt: "Final housing", caption: "Housing." },
+            { src: `${B}fin-cap.webp`, alt: "Final cap", caption: "Cap with the domed cartridge seat." },
+            { src: `${B}fin-canister.webp`, alt: "CO2 cartridge model", caption: "CO₂ cartridge, modeled to size." },
+            { src: `${B}fin-cap-gasket.webp`, alt: "Cap gasket", caption: "Square-profile cap gasket." },
+            { src: `${B}fin-oring.webp`, alt: "O-ring", caption: "Hard Buna-N O-ring." },
+            { src: `${B}fin-nozzle.webp`, alt: "Brass nozzle", caption: "Brass nozzle." },
+            { src: `${B}fin-insert.webp`, alt: "Heat-set insert", caption: "Brass heat-set insert." },
+            { src: `${B}fin-set-screw.webp`, alt: "Vented set screw", caption: "Vented cup-point set screw." },
+            { src: `${B}fin-spring.webp`, alt: "Spring", caption: "Gas release spring." },
+          ]}
+        />
+      </div>
+
       <H id="leaks">Why it kept leaking</H>
       <Prose>
         <P text="Most of summer 2 was a fight with leaks. Our notes from that stretch read like a detective novel:" />
@@ -473,13 +525,41 @@ export default function SparkliPost() {
         <P text="We were thrilled for about thirty seconds, until we tried to unscrew it. It was so pressurized that the cap wouldn't come off, and the **venting mechanism didn't vent**. A water bottle you can carbonate but never open again is a great gag gift and a bad product." />
         <P text="We didn't totally let it go. That winter I reopened the CAD and branched off a new three-piece gas release: a knob, a spring, and a plunger that lets you dump the pressure before opening." />
       </Prose>
+      <H3>The final design, part by part</H3>
+      <Prose>
+        <P text="The final design lives on its own branch in Onshape (B14). Compared to the summer versions, it splits the body into two pieces: a **housing** with built-in gas channels running alongside the central bore, and an **attachment** below it. The cap screws on top, and there is no straw. Here it is cut in half on two planes, so you can see the channels:" />
+      </Prose>
+      <Wide src={`${B}b14-section.webp`} alt="Two section views of the final design" cap="The final design (B14), sectioned on two planes 90° apart. The vertical slots in the blue housing are the gas channels." />
       <div className="mt-6">
         <Gallery
           cols={3}
           items={[
-            { src: `${B}cad-v10.webp`, alt: "V10", caption: "V10: no leaks, can't unscrew." },
-            { src: `${B}cad-gas-release.webp`, alt: "Gas release mechanism", caption: "The three-piece gas release." },
-            { src: `${B}cad-v16.webp`, alt: "Latest assembly", caption: "Latest assembly." },
+            { src: `${B}b14-asm-iso.webp`, alt: "Final assembly", caption: "Final assembly: cap, housing, and attachment." },
+            { src: `${B}b14-asm-front.webp`, alt: "Final assembly front", caption: "Front view." },
+            { src: `${B}b14-housing-cap.webp`, alt: "Housing and cap", caption: "Housing and cap sub-assembly." },
+          ]}
+        />
+      </div>
+      <Prose>
+        <div className="mt-6" />
+        <P text="And every component in the final document:" />
+      </Prose>
+      <div className="mt-4">
+        <Gallery
+          cols={3}
+          items={[
+            { src: `${B}b14-housing.webp`, alt: "Housing", caption: "Housing, with the gas channel holes on top." },
+            { src: `${B}b14-attachment.webp`, alt: "Attachment", caption: "Attachment." },
+            { src: `${B}b14-cap.webp`, alt: "Cap", caption: "Cap with the cartridge seat." },
+            { src: `${B}b14-cap-gasket.webp`, alt: "Cap gasket", caption: "Cap gasket." },
+            { src: `${B}b14-canister.webp`, alt: "CO2 cartridge", caption: "The CO₂ cartridge, modeled to size." },
+            { src: `${B}b14-nozzle-oring.webp`, alt: "Nozzle with O-ring", caption: "Brass nozzle with its O-ring." },
+            { src: `${B}b14-gas-release.webp`, alt: "Gas release", caption: "Gas release: heat-set insert, spring, and plunger." },
+            { src: `${B}b14-insert.webp`, alt: "Heat-set insert", caption: "McMaster heat-set insert." },
+            { src: `${B}b14-plunger.webp`, alt: "Plunger", caption: "Plunger." },
+            { src: `${B}b14-spring.webp`, alt: "Spring", caption: "Stainless compression spring." },
+            { src: `${B}b14-set-screw.webp`, alt: "Set screw", caption: "Vented cup-point set screw." },
+            { src: `${B}b14-adapter.webp`, alt: "Straw adapter", caption: "The straw adapter. Still in the CAD, but not in the fired final assembly." },
           ]}
         />
       </div>
