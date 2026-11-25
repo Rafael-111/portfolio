@@ -111,7 +111,7 @@ export default function SparkliPost() {
       <Wide
         src={`${B}cad-evolution.webp`}
         alt="Sparkli CAD versions side by side"
-        cap="A few of the Sparkli versions from Onshape, summer 2025. Every one of these got printed, assembled, and fired."
+        cap="A few of the Sparkli versions from Onshape, from summer 2025 to the final design (B14, right), which dropped the straw. Every one of these got printed, assembled, and fired."
       />
 
       <div className="sans mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
