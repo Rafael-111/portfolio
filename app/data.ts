@@ -12,7 +12,7 @@ export const contact = {
 
 export const summary = [
   "UC Berkeley mechanical engineer who takes hardware from concept to working parts in aerospace, motorsport, and robotics.",
-  "Shipped a defense client's circuit test box in **one month**, led a **5-person** motorcycle suspension team, and helped a 15 ft plane place **top 15** at SAE Aero Design West.",
+  "Shipped a defense client's circuit test box in **one month**, led a **5-person** motorcycle suspension team, and helped the Cal Aero plane place **top 15** at SAE Aero Design West.",
 ];
 
 export type Entry = {
@@ -36,8 +36,8 @@ export const experience: Entry[] = [
     dates: "Jun – Aug 2025",
     bullets: [
       "Hired to build a test box that checks a defense client's circuits before shipping; delivered it from schematic to hardware in **one month**.",
-      "Learned circuit analysis on the job, iterating circuits in CircuitJS until one worked, then released the BOM and CAD to the shop floor.",
-      "Scripted a unique QR label for every package, saving about **10 labor hours a week**.",
+      "Hardest part was reading industry electrical schematics and learning to prototype circuits, iterating in CircuitJS with the supervising senior engineer before releasing the BOM and CAD.",
+      "Scripted unique QR labels for every package, saving about **10 labor hours a week**.",
     ],
     image: "/Precision_Aviation_Group_Logo.jpg",
     imageAlt: "Precision Aviation Group logo (EDN Aviation's parent company)",
@@ -53,8 +53,8 @@ export const projects: Entry[] = [
     place: "UC Berkeley",
     dates: "Sep 2024 – Dec 2025",
     bullets: [
-      "Led a **5-person** team on a race motorcycle's rear suspension for an international competition in Spain, rebuilding the team after the first group fell through.",
-      "Iterated **hundreds** of linkage designs under shifting chassis constraints to get a near-linear wheel rate that stiffens at full travel.",
+      "Led a **5-person** team on a race motorcycle's rear suspension for a competition in Spain, rebuilding the team after the first group fell through.",
+      "Iterated **hundreds** of linkage designs under shifting chassis constraints to get a near-linear wheel rate stiffening at full travel.",
     ],
     image: "/img/moto-bike.webp",
     imageAlt: "CAD render of the MotoStudent race motorcycle with rider",
@@ -65,8 +65,8 @@ export const projects: Entry[] = [
     role: "Lead Programmer",
     dates: "Jan – May 2025",
     bullets: [
-      "Designed the chassis and electrical system, then built and wired the robot.",
-      "Wrote C++ firmware so it finds and fights fires on its own; linking the thermal camera to stepper control took many versions.",
+      "Built an autonomous turret that finds and puts out fires, designing the chassis and electrical system and wiring it.",
+      "Wrote the C++ firmware; getting the thermal camera to drive the steppers autonomously was the hard part, taking many versions.",
     ],
     image: "/img/robot-turret.webp",
     imageAlt: "The πRo-Bot fire-fighting turret with its controller",
@@ -91,7 +91,7 @@ export const projects: Entry[] = [
     place: "UC Berkeley",
     dates: "Sep 2023 – Apr 2024",
     bullets: [
-      "With no prior documentation, learned dihedral analysis from scratch and built the XFLR5 and MATLAB models that set the wing geometry.",
+      "Designed the wing for the team's 15 ft competition plane; with no prior documentation, learned dihedral analysis from scratch and built the XFLR5 and MATLAB models.",
       "Sized the spar for **10%** less material at equal strength and stiffness, then learned laser cutting and balsa building to make the wing.",
     ],
     image: "/img/aero-plane.webp",
