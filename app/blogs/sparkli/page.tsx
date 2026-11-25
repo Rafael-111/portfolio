@@ -246,6 +246,15 @@ export default function SparkliPost() {
         <P text="Everything plastic was printed on a **Bambu A1**: PLA first, PETG later. Everything else came from **McMaster-Carr** or got salvaged. We ordered snap rings, O-rings, compression and extension springs, and bolts, and we pulled needles and nozzles out of other carbonation bottles when our own weren't cutting it. The CO₂ cartridges were small 9.9 ml ones from Liss America." />
         <P text="We even tracked a BOM for each prototype. Version 1 cost about **$9.50 a unit** in hardware, mostly because extension springs are weirdly expensive. Version 2 switched to a compression spring from a 12-pack, and the hardware cost dropped to about **$1 a unit**." />
       </Prose>
+      <figure className="mt-6 grid items-center gap-5 sm:grid-cols-[minmax(0,320px)_1fr]">
+        <a href={`${B}print-bambu.webp`} target="_blank" rel="noopener noreferrer" className="block overflow-hidden rounded-lg border border-[var(--line)]">
+          <img src={`${B}print-bambu.webp`} alt="Red PLA Sparkli parts printing on a Bambu Lab printer" loading="lazy" className="h-auto w-full" />
+        </a>
+        <figcaption className="text-[15.5px] leading-[1.55] text-[var(--muted)]">
+          A fresh batch of 2024 trigger-era parts coming off the Bambu: the housing (still on its tree supports) and two of the
+          smaller mechanism parts. We printed sets like this almost every day.
+        </figcaption>
+      </figure>
       <Specs
         head={["Prototype", "Printed parts", "Bought or made"]}
         rows={[
@@ -328,12 +337,8 @@ export default function SparkliPost() {
       </Prose>
       <Clips
         items={[
-          { n: "1527", cap: "A failed attempt, with the prototype graveyard on the table behind it." },
           { n: "1530", cap: "Loading a cartridge and screwing on the top cap." },
-          { n: "1538", cap: "First sidewalk test. Confidence: high." },
           { n: "1569", cap: "The wet patches on the sidewalk are from earlier tests." },
-          { n: "1583", cap: "Firing the mechanism and straw on their own." },
-          { n: "1620", cap: "Close-up firing test." },
           { n: "1642", cap: "Dry fire indoors." },
           { n: "1684", cap: "A newer print. Same question every time: will it puncture?" },
           { n: "1691", cap: "Another test. We made a lot of these." },
@@ -463,41 +468,6 @@ export default function SparkliPost() {
         <P text="The hardware in the Onshape document is a good snapshot of where our heads were: McMaster **heat-set inserts**, **vented cup-point set screws** (a screw with a hole down the middle, for letting gas out), three different compression springs, soft and hard Buna-N O-rings, and a square-profile O-ring." />
       </Prose>
 
-      <H3>The final design, part by part</H3>
-      <Prose>
-        <P text="Like the 2024 version, here's every part of the final design on its own. It has far fewer moving parts than the trigger era. Most of the cleverness moved into the seals." />
-      </Prose>
-      <Specs
-        head={["Part", "What it does"]}
-        rows={[
-          ["Housing", "The main body. Threads into the Hydro Flask, holds the cartridge, and carries the needle and seal seats."],
-          ["Cap", "Screws down over the housing and pushes the cartridge onto the needle. The domed seat matches the end of the cartridge."],
-          ["Cap gasket", "A flat square-profile ring that seals the cap to the housing, so gas can only go one way."],
-          ["O-rings", "Hard and soft Buna-N O-rings from McMaster, sealing the housing to the bottle and the nozzle to the housing."],
-          ["Heat-set insert", "Brass threads melted into the printed plastic, so metal screws can thread into it without stripping the print."],
-          ["Vented set screw", "A set screw with a hole down the middle. Screw it in to seal, back it out to let gas escape. This was the venting idea."],
-          ["Spring and plunger", "The parts of the later gas release: push the plunger to dump the pressure before you open the cap."],
-          ["CO₂ cartridge", "Modeled to the real cartridge's dimensions so every seat, needle depth, and clearance was checked in CAD before printing."],
-          ["Brass nozzle", "Same trick as 2024: a 3D-printer nozzle used as a cheap, precise brass orifice."],
-        ]}
-      />
-      <div className="mt-6">
-        <Gallery
-          cols={3}
-          items={[
-            { src: `${B}fin-housing.webp`, alt: "Final housing", caption: "Housing." },
-            { src: `${B}fin-cap.webp`, alt: "Final cap", caption: "Cap with the domed cartridge seat." },
-            { src: `${B}fin-canister.webp`, alt: "CO2 cartridge model", caption: "CO₂ cartridge, modeled to size." },
-            { src: `${B}fin-cap-gasket.webp`, alt: "Cap gasket", caption: "Square-profile cap gasket." },
-            { src: `${B}fin-oring.webp`, alt: "O-ring", caption: "Hard Buna-N O-ring." },
-            { src: `${B}fin-nozzle.webp`, alt: "Brass nozzle", caption: "Brass nozzle." },
-            { src: `${B}fin-insert.webp`, alt: "Heat-set insert", caption: "Brass heat-set insert." },
-            { src: `${B}fin-set-screw.webp`, alt: "Vented set screw", caption: "Vented cup-point set screw." },
-            { src: `${B}fin-spring.webp`, alt: "Spring", caption: "Gas release spring." },
-          ]}
-        />
-      </div>
-
       <H id="leaks">Why it kept leaking</H>
       <Prose>
         <P text="Most of summer 2 was a fight with leaks. Our notes from that stretch read like a detective novel:" />
@@ -540,6 +510,24 @@ export default function SparkliPost() {
           ]}
         />
       </div>
+      <Prose>
+        <div className="mt-6" />
+        <P text="Like the 2024 version, here's every part of the final design. It has far fewer moving parts than the trigger era. Most of the cleverness moved into the seals." />
+      </Prose>
+      <Specs
+        head={["Part", "What it does"]}
+        rows={[
+          ["Housing and attachment", "The two-piece body. The housing holds the cartridge and carries the gas channels and seal seats, and the attachment below it threads in underneath."],
+          ["Cap", "Screws down over the housing and pushes the cartridge onto the needle. The domed seat matches the end of the cartridge."],
+          ["Cap gasket", "A flat square-profile ring that seals the cap to the housing, so gas can only go one way."],
+          ["O-rings", "Hard and soft Buna-N O-rings from McMaster, sealing the housing to the bottle and the nozzle to the housing."],
+          ["Heat-set insert", "Brass threads melted into the printed plastic, so metal screws can thread into it without stripping the print."],
+          ["Vented set screw", "A set screw with a hole down the middle. Screw it in to seal, back it out to let gas escape. This was the venting idea."],
+          ["Spring and plunger", "The parts of the later gas release: push the plunger to dump the pressure before you open the cap."],
+          ["CO₂ cartridge", "Modeled to the real cartridge's dimensions so every seat, needle depth, and clearance was checked in CAD before printing."],
+          ["Brass nozzle", "Same trick as 2024: a 3D-printer nozzle used as a cheap, precise brass orifice."],
+        ]}
+      />
       <Prose>
         <div className="mt-6" />
         <P text="And every component in the final document:" />

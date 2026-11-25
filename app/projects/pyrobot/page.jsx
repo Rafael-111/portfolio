@@ -115,7 +115,7 @@ export default function PyRobotPage() {
         <Prose>
           <P text="Two ESP32 boards talk to each other over **ESP-NOW**, a direct peer-to-peer radio link that needs no router. The turret board reads the 24×32 thermal camera (768 pixels, 8 Hz) and sends each frame to the controller in 60-pixel chunks, since a full frame is too large for one packet. The controller reassembles the chunks and checks that every piece arrived before using the frame." />
           <P text="On the controller side, the joystick is scaled to ±1000 with a dead zone so it doesn't drift, the trigger is a limit switch, and the mode button uses an interrupt with a hardware-timer debounce so one press registers once. On the turret, a trigger pulse starts the firing motor at a fixed PWM duty and stops it after one counted stroke of the plunger." />
-          <P text="Both the turret and the remote are written as state machines, and the report documents each with a state-transition diagram." />
+          <P text="Both the turret and the remote are written as state machines. The diagrams below are the logic the code follows." />
         </Prose>
         <div className="mt-5">
           <Gallery
@@ -125,6 +125,41 @@ export default function PyRobotPage() {
                 src: "/img/robot-wiring.webp",
                 alt: "Wiring diagram for the robot's electronics",
                 caption: "The wiring diagram I designed for the motors, sensors, and microcontroller.",
+              },
+            ]}
+          />
+        </div>
+      </Section>
+
+      <Section title="Code logic: state machines">
+        <Prose>
+          <P text="We mapped the firmware as state machines before writing it, so every button press and sensor reading has exactly one place to go." />
+          <P text="**Turret state diagram.** The controller sends a message with a mode number (**ctrlMsg.ledState**): 1 is manual, 2 is automatic, 3 is preventive, and the turret switches modes when it receives it. In **manual**, the turret sits idle until the joystick moves: left and right spin the base (waist) motor, up and down spin the wrist motor, and pulling the trigger spins the firing motor until it is released. In **automatic**, it runs **scanForHotSpot()** in Auto Search, switches to Auto Track when any reading goes above **60 °C**, and returns to searching once the center of the frame drops below 60 °C. In **preventive**, it moves to a starting height, then sweeps right and left between its far limits." />
+        </Prose>
+        <div className="mt-5">
+          <Gallery
+            cols={1}
+            items={[
+              {
+                src: "/img/robot-states.webp",
+                alt: "Turret state transition diagram with manual, automatic, and preventive modes",
+                caption: "Turret state-transition diagram: the three modes and what moves the turret between states.",
+              },
+            ]}
+          />
+        </div>
+        <Prose>
+          <div className="mt-6" />
+          <P text="**Code map.** This is the full map across both ESP32s, written as event / action pairs. The robot starts in manual mode when it's plugged in. Each trigger click on the controller changes the mode and the LED color (blue for auto, green for the scheduled mode, red for manual) and sends the change to the turret's ESP32. In auto, the turret scans and fires once the hottest region lines up with the crosshairs. In the scheduled mode (called instructional on this map), it fires every 2 minutes, rotates 10 degrees, and repeats. Once you leave manual, the joystick can only change modes, not drive the turret, which keeps it from fighting the automatic logic." />
+        </Prose>
+        <div className="mt-5 2xl:-mx-40">
+          <Gallery
+            cols={1}
+            items={[
+              {
+                src: "/img/robot-codemap.webp",
+                alt: "Code map of the pyrobot firmware as a state transition model",
+                caption: "Code map for both ESP32s (controller and turret), in event / action format. Click to open full size.",
               },
             ]}
           />
