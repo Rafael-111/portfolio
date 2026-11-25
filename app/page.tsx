@@ -57,9 +57,9 @@ export default function Home() {
   const more = cards.filter((c) => !c.featured);
 
   return (
-    <div className="mx-auto w-full max-w-[860px] px-4 py-10 sm:px-10 lg:py-16">
+    <div className="mx-auto w-full max-w-[960px] px-4 py-10 sm:px-10 lg:py-16">
       {/* Resume header */}
-      <header className="flex flex-col gap-4 border-b-2 border-[var(--ink)] pb-5 lg:flex-row lg:items-end lg:justify-between">
+      <header className="flex flex-col gap-4 border-b-2 border-[var(--ink)] pb-5 xl:flex-row xl:items-end xl:justify-between">
         <div className="sans">
           <h1 className="whitespace-nowrap text-[34px] font-bold leading-none tracking-[-0.02em] sm:text-[40px]">
             {contact.name}
@@ -68,7 +68,7 @@ export default function Home() {
             {contact.title} · {contact.location}
           </p>
         </div>
-        <div className="sans flex flex-wrap gap-2 text-[13px] font-medium lg:flex-nowrap">
+        <div className="sans flex flex-wrap gap-2 text-[13px] font-medium xl:flex-nowrap [&>a]:whitespace-nowrap">
           <a
             href={contact.resume}
             target="_blank"
@@ -89,8 +89,14 @@ export default function Home() {
             href={`mailto:${contact.email}`}
             className="rounded-md border border-[var(--line)] bg-white px-3.5 py-2 hover:border-[var(--ink)]"
           >
-            Email me
+            Email me ↗
           </a>
+          <Link
+            href="/blogs"
+            className="rounded-md border border-[var(--line)] bg-white px-3.5 py-2 hover:border-[var(--ink)]"
+          >
+            Blogs
+          </Link>
           <a
             href={contact.linkedin}
             target="_blank"
