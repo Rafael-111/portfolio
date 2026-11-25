@@ -244,7 +244,7 @@ export default function SparkliPost() {
 
       <H id="parts">Parts, printers, and McMaster</H>
       <Prose>
-        <P text="Everything plastic was printed on a **Bambu A1**: PLA first, PETG later. Everything else came from **McMaster-Carr** or got salvaged. We ordered snap rings, O-rings, compression and extension springs, and bolts, and we pulled needles and nozzles out of other carbonation bottles when our own weren't cutting it. The CO₂ cartridges were small 9.9 ml ones from Liss America." />
+        <P text="Everything plastic was printed on a **Bambu A1**: PLA first, PETG later. Everything else came from **McMaster-Carr** or got salvaged. We ordered snap rings, O-rings, compression and extension springs, and bolts, and we pulled needles and nozzles out of other carbonation bottles when our own weren't cutting it. The CO₂ cartridges were all 8 g ones from Liss America." />
         <P text="We even tracked a BOM for each prototype. Version 1 cost about **$9.50 a unit** in hardware, mostly because extension springs are weirdly expensive. Version 2 switched to a compression spring from a 12-pack, and the hardware cost dropped to about **$1 a unit**." />
       </Prose>
       <figure className="mt-6 grid items-center gap-5 sm:grid-cols-[minmax(0,320px)_1fr]">
@@ -260,7 +260,7 @@ export default function SparkliPost() {
         head={["Prototype", "Printed parts", "Bought or made"]}
         rows={[
           ["V1", "Top cap, trigger, housing", "Machined puncher, 2 McMaster extension springs, 2 bolts"],
-          ["V2", "Top cap, trigger, housing, firing cap", "McMaster compression spring, machined needle, Liss CO₂ cartridge"],
+          ["V2", "Top cap, trigger, housing, firing cap", "McMaster compression spring, machined needle, Liss 8 g CO₂ cartridge"],
           ["V3 (2025)", "Cap, housing, adapter (all eventually to be molded)", "Housing and adapter O-rings, gasket, needle, needle gasket and sleeve, cartridge"],
         ]}
       />
@@ -478,7 +478,7 @@ export default function SparkliPost() {
           "**The prints were too coarse to seal.** Printed upside down, the little nub the rubber stopper sits on came out rough from the layers and supports, so the rubber couldn't seal flush. The fix we planned: superfine **SLA** prints in a food-safe resin from Stratasys, plus sanding.",
           "**The gasket seat had to be exact.** We sized it for about 0.010 in of gasket compression, minus printing error, and matched the main O-ring groove to 0.745 in on both the vented and non-vented versions.",
           "**Threads.** More clearance on the needle thread, a bigger insert thread, tapered pipe threads made with Onshape's split feature, and a test cylinder printed just to check the needle fit.",
-          "**Pressure math.** The reference bottle uses the same cartridge for a smaller bottle. In a Hydro Flask, the same gas spreads over more headspace, so the pressure should be lower and the vents should still work. We also looked into a 12 g cartridge and whether the housing could hold the extra pressure.",
+          "**Pressure math.** The reference bottle uses the same cartridge for a smaller bottle. In a Hydro Flask, the same gas spreads over more headspace, so the pressure should be lower and the vents should still work. We also looked into going up from our 8 g cartridges to a 12 g one, and whether the housing could hold the extra pressure.",
           "**Sometimes it was the reference bottle.** At one point the Asfolia bottle we were copying stopped working entirely. Six fresh cartridges, every tightness, all leaked. Diagnosis: we had blown out the rubber sleeve on its needle.",
         ]}
       />
@@ -493,8 +493,10 @@ export default function SparkliPost() {
       <H id="final">The final model</H>
       <Prose>
         <P text="And then the final model did the thing. It **carbonated the water with zero water leaking**. Two summers of work, and there it was: sparkling water in a Hydro Flask." />
-        <P text="We were thrilled for about thirty seconds, until we tried to unscrew it. It was so pressurized that the cap wouldn't come off, and the **venting mechanism didn't vent**. A water bottle you can carbonate but never open again is a great gag gift and a bad product." />
-        <P text="We didn't totally let it go. That winter I reopened the CAD and branched off a new three-piece gas release: a knob, a spring, and a plunger that lets you dump the pressure before opening." />
+        <P text="We were thrilled for about thirty seconds, until we tried to unscrew it. It was **overpressurized**: the cap wouldn't come off. A water bottle you can carbonate but never open again is a great gag gift and a bad product." />
+        <P text="So we tried to add a way to let the pressure out. We tried venting holes, a cap-seal version, a vented housing with vented set screws, and more. **None of them worked.** Every vented version leaked, either gas or water, and usually both. Any path we opened for the extra pressure was also a path for the carbonation and the water to escape." />
+        <P text="So the closest we ever got was the **non-vented version**: the one that couldn't be opened, but actually carbonated the water without leaking. It's still the best result we had." />
+        <P text="We didn't totally let it go. That winter I reopened the CAD and branched off one more idea: a separate gas release, a spring and plunger meant to dump the pressure before you open the cap. It never made it past CAD." />
       </Prose>
       <H3>The final design, part by part</H3>
       <Prose>
@@ -522,7 +524,6 @@ export default function SparkliPost() {
           ["Cap", "Screws down over the housing and pushes the cartridge onto the needle. The domed seat matches the end of the cartridge."],
           ["Cap gasket", "A flat square-profile ring that seals the cap to the housing, so gas can only go one way."],
           ["O-rings", "Hard and soft Buna-N O-rings from McMaster, sealing the housing to the bottle and the nozzle to the housing."],
-          ["Heat-set insert", "Brass threads melted into the printed plastic, so metal screws can thread into it without stripping the print."],
           ["Vented set screw", "A set screw with a hole down the middle. Screw it in to seal, back it out to let gas escape. This was the venting idea."],
           ["Spring and plunger", "The parts of the later gas release: push the plunger to dump the pressure before you open the cap."],
           ["CO₂ cartridge", "Modeled to the real cartridge's dimensions so every seat, needle depth, and clearance was checked in CAD before printing."],
@@ -543,10 +544,8 @@ export default function SparkliPost() {
             { src: `${B}b14-cap-gasket.webp`, alt: "Cap gasket", caption: "Cap gasket." },
             { src: `${B}b14-canister.webp`, alt: "CO2 cartridge", caption: "The CO₂ cartridge, modeled to size." },
             { src: `${B}b14-nozzle-oring.webp`, alt: "Nozzle with O-ring", caption: "Brass nozzle with its O-ring." },
-            { src: `${B}b14-gas-release.webp`, alt: "Gas release", caption: "Gas release: heat-set insert, spring, and plunger." },
-            { src: `${B}b14-insert.webp`, alt: "Heat-set insert", caption: "McMaster heat-set insert." },
-            { src: `${B}b14-plunger.webp`, alt: "Plunger", caption: "Plunger." },
-            { src: `${B}b14-spring.webp`, alt: "Spring", caption: "Stainless compression spring." },
+            { src: `${B}b14-plunger.webp`, alt: "Plunger", caption: "Gas release plunger (CAD only)." },
+            { src: `${B}b14-spring.webp`, alt: "Spring", caption: "Gas release spring (CAD only)." },
             { src: `${B}b14-set-screw.webp`, alt: "Set screw", caption: "Vented cup-point set screw." },
             { src: `${B}b14-adapter.webp`, alt: "Straw adapter", caption: "The straw adapter. Still in the CAD, but not in the fired final assembly." },
           ]}
