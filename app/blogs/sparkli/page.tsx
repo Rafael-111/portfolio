@@ -53,9 +53,9 @@ function Clips({ items }: { items: { n: string; cap: string }[] }) {
   );
 }
 
-function Wide({ src, alt, cap }: { src: string; alt: string; cap: string }) {
+function Wide({ src, alt, cap, bleed }: { src: string; alt: string; cap: string; bleed?: boolean }) {
   return (
-    <figure className="mt-6">
+    <figure className={`mt-6 ${bleed ? "xl:-mx-32" : ""}`}>
       <a href={src} target="_blank" rel="noopener noreferrer" className="block overflow-hidden rounded-lg border border-[var(--line)] bg-white">
         <img src={src} alt={alt} loading="lazy" className="h-auto w-full" />
       </a>
@@ -362,10 +362,10 @@ export default function SparkliPost() {
 
       <H id="onshape">Sixteen versions in Onshape</H>
       <Prose>
-        <P text="Summer 2 lived in **Onshape**, and the version history tells the story better than I can:" />
+        <P text="Summer 2 lived in **Onshape**: 16 saved versions, plus a pile of branches. The version history tells the story better than I can:" />
       </Prose>
       <Specs
-        head={["Version", "Date (2025)", "Note from the version history"]}
+        head={["Version", "Date", "Note from the version history"]}
         rows={[
           ["V2", "Jun 14", "First working dry fire."],
           ["V3", "Jun 15", "No pressure release holes, minor fixes so parts sit flush."],
@@ -378,15 +378,60 @@ export default function SparkliPost() {
           ["V9", "Jul 4", "Cap seal version."],
           ["V10", "Jul 6", "Best working version. No leaks, but the cap is hard to unscrew. Needs venting."],
           ["V11", "Jul 18", "Vented variant. Printed well, worked poorly."],
+          ["V12", "Jan 4 ('26)", "Snapshot of an older version with through holes. Branched off to try a new 3-piece mechanism."],
+          ["V14–V16", "Jan 5 ('26)", "Gas release experiments, O-ring groove moved and squared off."],
         ]}
+        note="Dates are 2025 unless marked. V13 doesn't exist, and there are two V5s and two V15s. Version naming was not our strong suit."
+      />
+      <H3>Every version, cut in half</H3>
+      <Prose>
+        <P text="Here's the same thing as section views, all at the same scale, so you can see how the internals actually changed: the housing getting taller and beefier, the cartridge seat moving, the cap going from a separate screw-on lid (V4–V5) to a full cover (V6–V8, V10) to a low-profile seal cap (V9, V12, V16), and the nozzle disappearing once the straw took over." />
+      </Prose>
+      <Wide
+        src={`${B}sec-evolution.webp`}
+        bleed
+        alt="Section views of every Sparkli version at the same scale"
+        cap="Section views of V4 through V16, same scale, cut through the center axis. Heads up: the long green straw is in the CAD from V5 on, but the last several versions were actually fired without it in the final assembly."
+      />
+      <H3>Up close: the sealing end</H3>
+      <Prose>
+        <P text="Almost all of the leak fighting happened in the top 75 mm, where the cap, housing, and cartridge meet. Zoomed in:" />
+      </Prose>
+      <div className="mt-4">
+        <Gallery
+          cols={3}
+          aspect="aspect-[2/3]"
+          items={[
+            { src: `${B}sec-head-v6.webp`, alt: "V6 section", caption: "V6: full-cover cap, adapter grooves for gas release." },
+            { src: `${B}sec-head-v8.webp`, alt: "V8 section", caption: "V8: worked, but no way to let the pressure out." },
+            { src: `${B}sec-head-v9.webp`, alt: "V9 section", caption: "V9: the cap seal version." },
+            { src: `${B}sec-head-v10.webp`, alt: "V10 section", caption: "V10: no leaks. Also no way to open it." },
+            { src: `${B}sec-head-v11.webp`, alt: "V11 section", caption: "V11: vented housing. Printed well, worked poorly." },
+            { src: `${B}sec-head-v16.webp`, alt: "V16 section", caption: "V16: low-profile seal cap, reworked O-ring groove." },
+          ]}
+        />
+      </div>
+      <H3>The housing, version by version</H3>
+      <Wide
+        src={`${B}cad-housings.webp`}
+        bleed
+        alt="Housing renders across versions"
+        cap="Housing renders from V2 to V16 (not to scale). The slim V2–V6 housings grew a thick middle band from V8 on, V9 added a stepped seal seat, and V11 added the vent ports."
+      />
+      <H3>The cap, version by version</H3>
+      <Wide
+        src={`${B}cad-caps.webp`}
+        bleed
+        alt="Cap renders across versions"
+        cap="Cap renders (not to scale). Same job every time: push the cartridge onto the needle and seal. The threads, seat, and depth kept changing."
       />
       <div className="mt-6">
         <Gallery
           cols={3}
           items={[
-            { src: `${B}cad-housing-v2.webp`, alt: "Housing V2", caption: "Housing, V2: first working dry fire." },
-            { src: `${B}cad-housing-v8.webp`, alt: "Housing V8", caption: "Housing, V8: working, but no way to let the pressure out." },
-            { src: `${B}cad-housing-v16.webp`, alt: "Latest housing", caption: "Housing, latest." },
+            { src: `${B}cad-v8.webp`, alt: "V8 assembly", caption: "V8 assembly." },
+            { src: `${B}cad-v5-alt-seat.webp`, alt: "V5 assembly", caption: "V5: new O-ring seat, cap lifted off." },
+            { src: `${B}cad-plunger.webp`, alt: "Plunger", caption: "Plunger for the gas release." },
             { src: `${B}cad-cap.webp`, alt: "Cap", caption: "Cap with the cartridge seat." },
             { src: `${B}cad-adapter.webp`, alt: "Adapter and straw", caption: "Adapter with the long printable straw." },
             { src: `${B}cad-nozzle.webp`, alt: "Nozzle", caption: "Brass nozzle, modeled from the real printer nozzle." },
