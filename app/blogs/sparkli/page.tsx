@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Byline from "../Byline";
 import { Prose, P, Bullets, Specs } from "../../components/ProjectPage";
 
 export const metadata = { title: "Sparkli · Rafael Petrosian" };
@@ -105,7 +106,7 @@ export default function SparkliPost() {
           A carbonation attachment for your water bottle. Dozens of 3D-printed prototypes, 35+ logged tests, a few housings that
           exploded in our hands, a provisional patent we didn&apos;t need, and a competitor that beat us to market.
         </p>
-        <p className="sans mt-3 text-[13px] text-[var(--muted)]">Rafael Petrosian · Side project · Summer 2024 and Summer 2025</p>
+        <Byline when="Side project · Summer 2024 and Summer 2025" />
       </header>
 
       <Wide
