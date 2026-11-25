@@ -7,13 +7,12 @@ export const contact = {
   location: "Los Angeles, CA",
   email: "rp@rafaelpetrosian.com",
   linkedin: "https://www.linkedin.com/in/rafaelpetrosian/",
-  resume: "/Rafael%20Petrosian-Resume.pdf",
+  resume: "/RP_resume.pdf",
 };
 
 export const summary = [
   "UC Berkeley mechanical engineer who takes hardware from concept to working parts in aerospace, motorsport, and robotics.",
-  "Designed and built a defense client's circuit test box in **one month** as Assistant Engineer at EDN Aviation.",
-  "Determined the final manufactured wing geometry as Wing Design Engineer on Cal Aero SAE. The plane placed **top 15** in the Regular Class at SAE Aero Design West 2024.",
+  "Shipped a defense client's circuit test box in **one month**, led a **5-person** motorcycle suspension team, and helped a 15 ft plane place **top 15** at SAE Aero Design West.",
 ];
 
 export type Entry = {
@@ -36,8 +35,8 @@ export const experience: Entry[] = [
     place: "Van Nuys, CA",
     dates: "Jun – Aug 2025",
     bullets: [
-      "Transcribed the client's schematic, designed the analog test circuitry in CircuitJS, built the BOM and CAD models, and sent the full package to the shop floor after senior engineer review.",
-      "Measured and modeled parts in Onshape so the CNC shop got them right the first time.",
+      "Hired to build a test box that checks a defense client's circuits before shipping; delivered it from schematic to hardware in **one month**.",
+      "Learned circuit analysis on the job, iterating circuits in CircuitJS until one worked, then released the BOM and CAD to the shop floor.",
       "Scripted a unique QR label for every package, saving about **10 labor hours a week**.",
     ],
     image: "/Precision_Aviation_Group_Logo.jpg",
@@ -54,8 +53,8 @@ export const projects: Entry[] = [
     place: "UC Berkeley",
     dates: "Sep 2024 – Dec 2025",
     bullets: [
-      "Led a **5-person** team designing a race motorcycle's rear suspension for an international competition in Spain.",
-      "Owned the rear geometry and swing arm, from MotoChassis kinematics to full CAD, chassis mounts, and release to manufacturing.",
+      "Led a **5-person** team on a race motorcycle's rear suspension for an international competition in Spain, rebuilding the team after the first group fell through.",
+      "Iterated **hundreds** of linkage designs under shifting chassis constraints to get a near-linear wheel rate that stiffens at full travel.",
     ],
     image: "/img/moto-bike.webp",
     imageAlt: "CAD render of the MotoStudent race motorcycle with rider",
@@ -66,8 +65,8 @@ export const projects: Entry[] = [
     role: "Lead Programmer",
     dates: "Jan – May 2025",
     bullets: [
-      "Designed the chassis in CAD and the electrical system, then built the competition-ready robot, wiring harnesses included.",
-      "Wrote the C++ firmware that finds and puts out fires on its own with thermal sensors and steppers.",
+      "Designed the chassis and electrical system, then built and wired the robot.",
+      "Wrote C++ firmware so it finds and fights fires on its own; linking the thermal camera to stepper control took many versions.",
     ],
     image: "/img/robot-turret.webp",
     imageAlt: "The πRo-Bot fire-fighting turret with its controller",
@@ -79,8 +78,8 @@ export const projects: Entry[] = [
     place: "UC Berkeley",
     dates: "Aug – Dec 2024",
     bullets: [
-      "Designed and ran a test of the top three CPU thermal pastes, and confirmed Thermal Grizzly Kryonaut conducts heat best.",
-      "Milled the aluminum test rig, programmed the ESP32 data logger in Thonny, and calibrated the sensors in MATLAB.",
+      "Designed a test of three top CPU thermal pastes; heat flux sensors were too costly, so worked with Prof. Hayden Taylor to use thermocouples alone.",
+      "Milled the rig, programmed the ESP32 logger, calibrated sensors in MATLAB, and found Kryonaut conducts heat best.",
     ],
     image: "/img/thermal-rig.webp",
     imageAlt: "Insulated aluminum test blocks used to compare thermal pastes",
@@ -92,8 +91,8 @@ export const projects: Entry[] = [
     place: "UC Berkeley",
     dates: "Sep 2023 – Apr 2024",
     bullets: [
-      "Ran airfoil and dihedral simulations in XFLR5 and MATLAB to set the wing geometry, then designed the wing structure in CAD.",
-      "Sized the spar in MATLAB to hit strength and stiffness targets with **10%** less material, then laser-cut and built the wing.",
+      "With no prior documentation, learned dihedral analysis from scratch and built the XFLR5 and MATLAB models that set the wing geometry.",
+      "Sized the spar for **10%** less material at equal strength and stiffness, then learned laser cutting and balsa building to make the wing.",
     ],
     image: "/img/aero-plane.webp",
     imageAlt: "Cal Aero SAE plane on the runway",
